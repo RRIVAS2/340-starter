@@ -4,3 +4,120 @@
 *:after {
   box-sizing: border-box;
 }
+
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  align-items: center;
+}
+
+#top-header a {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName {
+  font-size: 2rem;
+}
+
+nav {
+  background-color: black;
+  padding: 1px;
+}
+
+nav ul {
+  color: white;
+  list-style: none;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: space-evenly
+}
+
+#hero {
+  position: relative;
+  height: 400px;
+  background: url("/images/vehicles/delorean.jpg") no-repeat center;
+}
+
+
+#hero-card {
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  margin-top: 30px;
+  margin-left: 20px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+
+#reviews-section {
+  margin-left: 30px;
+  margin-top: 40px;
+}
+
+#upgrades-section {
+  margin-left: 30px;
+  margin-top: 40px;
+}
+
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.upgrade-card {
+  height: 100px;
+  overflow: hidden;
+  background: grey;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid;
+}
+
+.upgrade-card img {
+   object-fit: contain;
+}
+
+.upgrade-item a {
+  display: block;
+  text-align: center;
+}
+
+footer {
+  background-color: black;
+  color: white;
+}
+
+
+
+@media (min-width: 720px) {
+  .container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  }
+
+@media (min-width: 850px) {
+  
+  body {
+    background: url("/images/site/checkerboard.jpg") repeat;
+  }
+
+  #wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border: 5px solid;
+  }
+  
+  .container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  }
