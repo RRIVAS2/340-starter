@@ -41,6 +41,9 @@ nav ul {
   background: url("/images/vehicles/delorean.jpg") no-repeat center;
 }
 
+#hero h1 {
+  margin-left: 25px;
+}
 
 #hero-card {
   padding: 12px;
@@ -51,8 +54,22 @@ nav ul {
   display: inline-block;
   background: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
+  text-align: center;
 }
 
+#buy-button {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
 #reviews-section {
   margin-left: 30px;
