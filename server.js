@@ -13,6 +13,8 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
+const intentionalErrorController = require("./controllers/intentionalErrorController")
+const intentionalErrorRoute = require("./routes/intentionalErrorRoute")
 
 
 /* ***********************
@@ -33,6 +35,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Intentional error routes
+app.use("/error", intentionalErrorRoute)
+
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

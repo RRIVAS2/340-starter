@@ -60,6 +60,33 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+
+/* **************************************
+* Build the item view HTML
+* ************************************ */
+Util.buildInventoryIdView = async function(data){
+  console.log(data)
+  let view = ""
+  if(data){
+    //view += '<h1>' + data.inv_model + ' - ' + data.inv_make +  '</h1>'
+    view += '<ul id="car-display">'
+    view += '<a href="../../inv/detail/' + data.inv_id 
+    + '" title="View ' + data.inv_make + ' ' + data.inv_model
+    + 'details"><img src="' + data.inv_image 
+    +'" alt="Image of '+ data.inv_make + ' ' + data.inv_model 
+    +' on CSE Motors" /></a>'
+    view += '<div id="car-details"> <ul> <li>Year: ' + data.inv_year + '</li>'
+    view += '<li>Price: $' + new Intl.NumberFormat('en-US').format(data.inv_price) + '</li>'
+    view += '<li>Mileage: ' + new Intl.NumberFormat('en-US').format(data.inv_miles) + '</li>'
+    view += '<li>Color: ' + data.inv_color + '</li>'
+    view += '</ul> </div>'
+    view += '</ul>'
+  } else { 
+
+  }
+  return view
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

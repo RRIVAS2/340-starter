@@ -134,6 +134,24 @@ h1 {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+
+#car-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 5rem; 
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+}
+
+#car-display ul {
+  padding: 1rem;
+  background: #fff; 
+  text-align: left;
+  list-style: none;
+  font-size: 1.3rem;
+}
+
 @media (min-width: 720px) {
   .container-grid {
     display: grid;

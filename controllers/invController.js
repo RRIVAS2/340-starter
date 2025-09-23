@@ -15,7 +15,26 @@ invCont.buildByClassificationId = async function (req, res, next) {
   res.render("./inventory/classification", {
     title: className + " vehicles",
     nav,
-    grid,
+    grid
+  })
+}
+
+
+
+
+/* ***************************
+ *  Build item view
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const invId = req.params.invId
+  const data = await invModel.getByInventoryId(invId)
+  const view = await utilities.buildInventoryIdView(data[0])
+  let nav = await utilities.getNav()
+  const itemModel = `${data[0].inv_make} - ${data[0].inv_model}`; 
+  res.render("./inventory/inventoryid", {
+    title: itemModel,
+    nav,
+    view
   })
 }
 
