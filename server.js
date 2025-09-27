@@ -15,6 +15,35 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
 const intentionalErrorController = require("./controllers/intentionalErrorController")
 const intentionalErrorRoute = require("./routes/intentionalErrorRoute")
+const session = require("express-session")
+const pool = require("./database/")
+const accountRoute = require("./routes/accountRoute")
+const bodyParser = require("body-parser")
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+ app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 /* ***********************
@@ -39,6 +68,7 @@ app.use("/inv", inventoryRoute)
 // Intentional error routes
 app.use("/error", intentionalErrorRoute)
 
+app.use("/account", accountRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
