@@ -36,5 +36,16 @@ router.post(
     inventoryValidate.checkInventoryData,
     utilities.handleErrors(invController.addInventory))
 
+// Process the get inventory by classificationId ajax request
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Process the modify inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+
+router.post(
+    "/modify-inventory/",
+    inventoryValidate.addInventoryRules(),
+    inventoryValidate.checkModifyData,
+    utilities.handleErrors(invController.updateInventory))
 
 module.exports = router;
