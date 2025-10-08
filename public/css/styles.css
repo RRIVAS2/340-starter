@@ -217,6 +217,17 @@ button:disabled {
   border: 1px solid #aaa;
 }
 
+#tools a {
+  margin-right: 25px;
+}
+
+#container-accountmanagement {
+  margin: 20px;
+}
+
+.accountupdate-header {
+  text-align: center;
+}
 /* Media Queries */
 
 @media (min-width: 720px) {

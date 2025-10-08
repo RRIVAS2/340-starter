@@ -30,9 +30,31 @@ router.post(
     utilities.handleErrors(accountController.registerAccount))
 
 
-// Route to build Login view
+// Route to account management view
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement));
 
+// Route to update account view
+router.get("/edit/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount));
 
+// Route to process the update account data
+router.post(
+    "/update-account", 
+    utilities.checkLogin, 
+    regValidate.updateRules(),
+    utilities.handleErrors(accountController.updateAccount));
+
+// Route to process the update password data
+router.post(
+    "/update-password", 
+    utilities.checkLogin, 
+    regValidate.updateRules(),
+    utilities.handleErrors(accountController.updatePassword));
+
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwt")
+  req.flash("notice", "You have been logged out.")
+  res.redirect("/")
+})
 
 module.exports = router;
