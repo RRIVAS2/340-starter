@@ -228,6 +228,33 @@ button:disabled {
 .accountupdate-header {
   text-align: center;
 }
+
+
+#ticket_description {
+  font-size: 14px;
+  height: 120px;
+}
+
+#ticket_subject {
+  font-size: 14px;
+  height: 40px;
+}
+
+#ticket-header {
+  margin: 20px;
+}
+
+
+
+#ticketDisplay {
+  margin-left: 40px;      /* Moves the table to the right */
+}
+
+#ticketDisplay th, #ticketDisplay td {
+  padding: 8px 16px;      /* Adds padding inside cells */
+  text-align: left;
+}
+
 /* Media Queries */
 
 @media (min-width: 720px) {

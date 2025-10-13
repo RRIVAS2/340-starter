@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const supportModel = require("../models/support-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -11,6 +12,7 @@ Util.getNav = async function (req, res, next) {
   console.log(data)
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
+  list += '<li><a href="/parts" title="View our Repair/Enhancement Parts">Auto-Parts</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
     list +=
@@ -182,5 +184,31 @@ Util.checkInventoryAuth = (req, res, next) => {
     return res.redirect("/account/login")
   }
 }
+
+/* ************************
+ * Constructs the classification unordered list
+ ************************** */
+
+Util.buildTicketTable = async function (account_id = null) {
+  let data = await supportModel.getTicketsByAccountId(account_id)
+  let ticketTable = ""
+  if (data && data.length > 0) {
+    ticketTable = '<table id="ticketDisplay"><thead>'
+    ticketTable += '<tr><th>Ticket ID</th><th>Subject</th><th>Status</th></tr>'
+    ticketTable += '</thead><tbody>'
+    data.forEach(function (element) {
+      ticketTable += `<tr>
+        <td>${element.ticket_id}</td>
+        <td>${element.ticket_subject}</td>
+        <td>${element.ticket_status}</td>
+      </tr>`
+    })
+    ticketTable += '</tbody></table>'
+  } else {
+    ticketTable = '<p class="notice">No tickets found.</p>'
+  }
+  return ticketTable
+}
+
 
 module.exports = Util
